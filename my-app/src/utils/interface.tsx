@@ -21,6 +21,7 @@ export interface ModalProps {
     type: string;
     value: string;
     required:boolean
+    datatestid: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   }
  export interface AuthState {

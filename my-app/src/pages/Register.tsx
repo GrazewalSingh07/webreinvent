@@ -24,9 +24,11 @@ const Register: React.FC = () => {
     try {
       authService.register({ email, password }).then((response) => {
         const data: AuthData = response.data;
-        console.log("Register");
-        dispatch(registerAction(data));
+        
+        dispatch(registerAction(data.token));
         navigate("/dashboard");
+      }).catch(()=>{
+        alert('regiser with defined user')
       });
     } catch (e) {
       if (typeof e === "string") {
@@ -53,6 +55,7 @@ const Register: React.FC = () => {
             <FormInput
               label="Email"
               type="email"
+              datatestid='reg-email'
               value={email}
               required={true}
               onChange={(e) => setEmail(e.target.value)}
@@ -62,6 +65,7 @@ const Register: React.FC = () => {
             <FormInput
               type="password"
               label="Password"
+              datatestid='reg-password'
               value={password}
               required={true}
               onChange={(e) => setPassword(e.target.value)}

@@ -19,10 +19,10 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.token = null;
     },
-    registerAction: (state, action: PayloadAction<{ id: string; token: string }>) => {
+    registerAction: (state, action: PayloadAction<string >) => {
       
       state.isAuthenticated = true;
-      state.token = action.payload.token;  
+      state.token = action.payload;  
     },
   },
 });

@@ -12,8 +12,9 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate= useNavigate()
+
   const handleSignIn = () => {
-  
+    dispatch(loginAction('token'));
     try {
       setIsLoading(true);
        authService.login({ email, password }).then((response) => {
@@ -42,12 +43,13 @@ const Login: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="bg-white p-8 rounded shadow-md w-96">
-        <h1 className="text-2xl font-semibold mb-4">Login</h1>
+        <h1 className="text-2xl font-semibold mb-4">Login with us</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <FormInput
               label="Email"
               type="email"
+              datatestid='log-email'
               required={true}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -55,6 +57,7 @@ const Login: React.FC = () => {
           </div>
           <div className="mb-4">
             <FormInput
+             datatestid='log-password'
               label="Password"
               type="password"
               required={true}
@@ -67,7 +70,7 @@ const Login: React.FC = () => {
             type="submit"
             disabled={isLoading}
           >
-            {isLoading ? "Signing In..." : "Login"}
+            {isLoading ? "Loggin In..." : "Login"}
           </button>
         </form>
         <p className="py-2">
